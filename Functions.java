@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.concurrent.TimeoutException;
 
 public class Functions {
     AsciArt graphics = new AsciArt();
@@ -21,16 +22,18 @@ public class Functions {
     public char gameUserTurn() {
         System.out.println("Your turn! chose r for rock, p for paper or s for scissors!");
         char userChose = scanner.next().toLowerCase().charAt(0);
-        if (userChose == 'r'){
+        if (userChose == 'r') {
             System.out.println("Player use ROCK");
             System.out.println(graphics.rock);
-
-        }else if (userChose == 'p'){
+        } else if (userChose == 'p') {
             System.out.println("Player use PAPER");
             System.out.println(graphics.paper);
-        }else {
+        } else if (userChose == 's') {
             System.out.println("Player use SCISSORS");
             System.out.println(graphics.scissors);
+        } else {
+            System.out.println("please type r for rock, p for paper or s for scissors!");
+            return 0;
         }
         return userChose;
 
@@ -95,9 +98,7 @@ public class Functions {
         } else {
             System.out.println("draw");
             System.out.println("Player score : " + playerScore + " computer score " + computerScore);
-
         }
-
     }
 
     public boolean isGameFinished() {
@@ -108,6 +109,7 @@ public class Functions {
             System.out.println("Game Over COMPUTER WIN!");
             return true;
         }
+
         return false;
     }
 }
